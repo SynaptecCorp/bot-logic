@@ -9,10 +9,10 @@ export class AppService {
     return users;
   }
 
-  async postHello() {
+  async postHello(body: any) {
     const user = await this.prisma.user.create({
       data: {
-        name: 'Alice',
+        name: body.name,
       },
     });
     return user;
