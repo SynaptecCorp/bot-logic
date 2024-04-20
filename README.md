@@ -10,3 +10,13 @@ docker run --name mongo \
 
 #URL connection
 DATABASE_URL="mongodb://monty:pass@localhost:27017/db_name?authSource=admin&directConnection=true"
+
+## Conectar a mongo-express:
+
+- Primero creamos una red.
+- Luego levantamos el server de mongo con la red creada.
+- Luego levantamos mongo-express con la misma red:
+
+  ```bash
+  docker run -it --rm -p 8081:8081 --network mongonet -e ME_CONFIG_MONGODB_URL="mongodb://usuario:password@172.18.0.2:27017/chatbot?authSource=admin&directConnection=true" mongo-express
+  ```
